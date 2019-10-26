@@ -12,18 +12,7 @@ function App() {
     svg
       .selectAll("circle")
       .data(data)
-      .join(
-        //What I want to do with a new piece of data - the "r" value is the radius.
-        enter => enter.append("circle").attr("class", "new"),
-        //define what I want to do with the elements that are already there and need to update
-        //this gives the class "updated" to all the elements that where updated.
-        update => update.attr("class", "updated")
-        //Here you define what to do with the elements that exit, you don't usually need this exit
-        //callback, because by default, d3 will remove exiting elements.
-        //exit => exit.remove()
-      )
-      //We put these attributes after the join. The join will handle a combination of both
-      //entering and updating elements to not repeat code after the enter and update callbacks
+      .join("circle")
       .attr("r", value => value)
       .attr("cx", value => value * 2)
       .attr("cy", value => value * 2)
